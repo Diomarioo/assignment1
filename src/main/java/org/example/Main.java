@@ -1,16 +1,17 @@
 package org.example;
-
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
           AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-//        Parrot parrot = context.getBean("parrotKesha" ,Parrot.class);
-//        System.out.println(parrot.getName());
+        FootballAgency agency = context.getBean(FootballAgency.class);
 
-        Person person = context.getBean(Person.class);
-        System.out.println(person.getName());
-        System.out.println(person.getParrot().getName());
+        // 3. Запускаем метод, который вызовет цепочку действий
+        agency.managePlayer();
 
     }
 }
